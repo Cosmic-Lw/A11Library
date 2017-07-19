@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Ceshi from '@/components/ceshi'
-import iView from 'iview'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -15,5 +15,10 @@ export default new Router({
         path: '/Ceshi',
         name: 'ceshi',
         component: Ceshi
-    }]
+    },{
+        path: '/Login',
+        name: 'Login',
+        component: Login
+    }
+    ]
 })

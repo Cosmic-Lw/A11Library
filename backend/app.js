@@ -1,12 +1,12 @@
 var express = require('express');
 var path = require('path');
+var session = require('express-session');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var session = require('express-session');
 //原始文件
-// var index = require('./routes/index');
+//var index = require('./routes/index');
 /**
  *  登录控制的api
  */
@@ -31,14 +31,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //使用express-session
-app.user(session({
+app.use(session({
     secret: 'zhanglublog', //secret的值建议使用随机字符串
-    cookie: { maxAge: 60 * 1000 * 30 } // 过期时间（毫秒）
+    cookie: { maxAge: 60 * 1000 * 30 },  // 过期时间（毫秒）
+    resave: true,
+    saveUninitialized: true
 }));
 //使用路由
 // app.use('/', index);
 
-app.use('/users', users);
+app.use('/user', users);
 /**
  * 使用路由
  */

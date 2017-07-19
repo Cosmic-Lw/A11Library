@@ -34,6 +34,13 @@ module.exports = {
                     //可以用正則方式替代掉，這樣往後 /api/xxx/xxx 之類的址，就會自動匹配了
                     req.url = req.url.replace(/^\/api/, '');
                 }
+            },
+            '/user': {
+                target: 'http://localhost:3000', //要跨域访问的API域名
+                rewrite: function(req) {
+                    //可以用正則方式替代掉，這樣往後 /user/xxx/xxx 之類的址，就會自動匹配了
+                    req.url = req.url.replace(/^\/user/, '');
+                }
             }
         },
         // CSS Sourcemaps off by default because relative paths are "buggy"

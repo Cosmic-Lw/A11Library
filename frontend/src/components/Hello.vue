@@ -11,7 +11,7 @@
 import axios from 'axios'
 async function ceshi(next) {
   try {
-    var res = await axios.get('/api/Starter')
+    var res = await axios.get('/api/starter')
     console.log("测试数据"+res)
     console.log(res)
     if(res.status===200||304){
