@@ -26,7 +26,8 @@ async function loginuser(self){
             username: self.username,
             password: self.password
         });
-        if(res.logined == 1){
+        console.log(res.data)
+        if(res.data.logined == 1){
            self.$router.push({ path: '/' }) 
         }
     }catch(err){
