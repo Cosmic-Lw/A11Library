@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const createError = require('../modules/error')
-const sql = require('mysql').createPool(sql_config)
+const sql_config = require('../modules/sql_config');
+const createError = require('../modules/error');
+const sql = require('mysql').createPool(sql_config);
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -31,8 +32,8 @@ router.post('/login', function(req, res, next) {
         });
     }
 });
-router.post('/register', function(req, res, next) {
+// router.post('/register', function(req, res, next) {
 
-});
+// });
 
 module.exports = router;
