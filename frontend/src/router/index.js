@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Ceshi from '@/components/ceshi'
 import Login from '@/components/Login'
-import Editor from '@/components/Editor'
+import Editor from '@/components/editor'
 
 Vue.use(Router)
 

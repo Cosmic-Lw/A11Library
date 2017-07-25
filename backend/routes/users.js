@@ -42,8 +42,28 @@ router.post('/login', function(req, res, next) {
         });
     }
 });
-// router.post('/register', function(req, res, next) {
-
-// });
+router.post('/register', function(req, res, next) {
+    if(req.body.username&&req.body.password)
+    {
+        next(createError("用户名或密码没有输入", 400, "用户名或密码没有输入"));
+        return;
+    }
+    console.log(username)
+    console.log(password)
+    const queryStr = `select username from account where username = ?`;
+    inputs = [username];
+    sql.query(queryStr, inputs, function(error, results) {
+        if (error) {
+            next(error);
+        } else {
+            console.log(results)
+            if (results[0].username) {
+                res.json({ registed: 1 });
+            } else {
+                const insertaccount = `insert into `
+                res.json({ registed: 1, username: results[0].username, password: results[0].password });
+                }
+            }
+});
 
 module.exports = router;

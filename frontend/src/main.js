@@ -6,9 +6,12 @@ import router from './router'
 import iView from 'iview'
 import VueQuillEditor from 'vue-quill-editor'
 import 'iview/dist/styles/iview.css'
+import Vuex from 'vuex'
 
 Vue.use(iView)
 Vue.use(VueQuillEditor)
+Vue.use(Vuex)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
