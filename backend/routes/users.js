@@ -64,6 +64,7 @@ router.post('/register', function(req, res, next) {
                 res.json({ registed: 1, username: results[0].username, password: results[0].password });
                 }
             }
+    });
 });
 
 module.exports = router;
