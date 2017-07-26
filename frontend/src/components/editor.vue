@@ -29,6 +29,7 @@
         </template>
     </div>
     <Upload
+        name="avatar"
         ref="upload"
         :show-upload-list="false"
         :default-file-list="defaultList"
@@ -42,7 +43,7 @@
         type="drag"
         action="/api/upload"
         style="display: inline-block;width:58px;">
-        <div style="width: 58px;height:58px;line-height: 58px;">
+        <div name="avatar" style="width: 58px;height:58px;line-height: 58px;">
             <Icon type="camera" size="20"></Icon>
         </div>
     </Upload>
@@ -53,8 +54,11 @@
   
 
 
-<form id="upload-form" action="/api/upload" method="post" enctype="multipart/form-data" > 　　　<input type="file" id="upload" name="upload" /> <br /> 　　　<input type="submit" value="Upload" /> </form>
-
+<form id='editfile' method='post' action='/api/upload' enctype='multipart/form-data'>
+    <input name="text" type="text"/>
+    选择图片：<input name="avatar" id='upfile' type='file'/>
+    <input type='submit' value='提交'/>
+</form>
 
 
 </div>
@@ -136,7 +140,9 @@
       },
       handleSuccess (res, file) {
         // 因为上传过程为实例，这里模拟添加 url
-        console.log("返回数据", res)
+        console.log(res.filepath)
+        file.url = res.filepath;
+        console.log("返回数据", res);
       },
       handleBeforeUpload () {
         const check = this.uploadList.length < 5;
