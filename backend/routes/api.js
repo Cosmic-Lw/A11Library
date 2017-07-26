@@ -3,7 +3,7 @@ var router = express.Router();
 var upload = require("../modules/fileupload");
 const sql_config = require("../modules/sql_config");
 const sql = require('mysql').createPool(sql_config)
-
+var sendmail = require("../modules/mail.js")
 //测试样式
 router.get('/starter', function(req, res, next) {
     req.session.title = '标题';
@@ -42,22 +42,9 @@ router.post('/upload', upload.single('avatar'), function (req, res, next) {
     }
 });
 
-
-    // var des_file = __dirname + "/" + req.file[0].originalname;
-    //     fs.readFile( req.files[0].path, function (err, data) {
-    //         fs.readFile(des_file, data, function (err) {
-    //             if(err){
-    //                 console.log(err)
-    //             }else{
-    //                 res = {
-    //                     message: 'File uploaded successfully',
-    //                     filename: req.files[0].originalname
-    //                 };
-    //             }
-    //             console.log(res);
-    //             res.end( JSON.stringify(res));
-    //         });
-    //     });
-//});
+router.post('/sendMail', function(req, res, next){
+    console.log(req.body)
+    sendmail(req.body.useremail, '这是测试邮件', 'Hi,在家啊没干');
+})
 
 module.exports = router;
