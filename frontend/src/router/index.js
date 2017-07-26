@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import Ceshi from '@/components/ceshi'
 import Login from '@/components/Login'
 import Editor from '@/components/editor'
+import Email from '@/components/mail'
 
 Vue.use(Router)
 
@@ -24,5 +25,9 @@ export default new Router({
     path: '/Editor',
     name: 'Editor',
     component: Editor
+  }, {
+    path: '/Email',
+    name: 'Email',
+    component: Email
   }]
 })
